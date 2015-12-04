@@ -13,7 +13,7 @@ export default function fromNow() {
 
     for (let timeUnit in timeUnits) if (timeDifference > timeUnits[timeUnit]) {
       let numberOfUnits:number = Math.floor(timeDifference / timeUnits[timeUnit]);
-      return `${numberOfUnits} ${timeUnit} ${numberOfUnits > 1 ? 's ago' : ' ago'}`;
+      return `${numberOfUnits} ${timeUnit}${numberOfUnits > 1 ? 's ago' : ' ago'}`;
     }
   };
 }

@@ -7,6 +7,7 @@ import routes from './routes.ts';
 import HackerNewsAPI from './factories/HackerNewsAPI.ts';
 import home from './home/home.ts';
 import item from './item/item.ts';
+import user from './user/user.ts';
 
 import domain from './filters/domain.ts';
 import commentsNumber from './filters/commentsNumber.ts';
@@ -22,6 +23,7 @@ module hackerNews {
     .config(['$urlRouterProvider', '$stateProvider', routes])
     .factory('HackerNewsAPI', ['$firebaseArray', '$firebaseObject', HackerNewsAPI])
     .directive('home', home)
+    .directive('user', user)
     .directive('item', item)
     .filter('domain', domain)
     .filter('commentsNumber', commentsNumber)

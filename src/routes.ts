@@ -9,5 +9,9 @@ export default function routes(
       url: '/',
       template: '<home></home>'
     })
+    .state('user', {
+      url: '/user/:userID',
+      template: '<user></user>'
+    })
   ;
 }
