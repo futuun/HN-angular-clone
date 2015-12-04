@@ -15,11 +15,12 @@ import trustHtml from './filters/trustHtml.ts';
 
 import pagination from './components/pagination/index.ts';
 import timeAgo from './components/timeAgo/index.ts';
+import spinner from './components/spinner/spinner.ts';
 
 module hackerNews {
   'use strict';
   angular
-    .module('hacker-news', ['ui.router', 'firebase', pagination, timeAgo])
+    .module('hacker-news', ['ui.router', 'firebase', pagination, timeAgo, spinner])
     .config(['$urlRouterProvider', '$stateProvider', routes])
     .factory('HackerNewsAPI', ['$firebaseArray', '$firebaseObject', HackerNewsAPI])
     .directive('home', home)

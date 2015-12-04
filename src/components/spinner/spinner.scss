@@ -1,0 +1,25 @@
+.s {
+  width: 140px;
+  text-align: center;
+
+  & > div {
+    width: 18px;
+    height: 18px;
+    background-color: #333;
+
+    border-radius: 50%;
+    display: inline-block;
+    animation: b 1.4s infinite ease-in-out both;
+  }
+}
+
+.s .b1 {animation-delay: -0.80s}
+.s .b2 {animation-delay: -0.64s}
+.s .b3 {animation-delay: -0.48s}
+.s .b4 {animation-delay: -0.32s}
+.s .b5 {animation-delay: -0.16s}
+
+@keyframes b {
+  0%, 80%, 100% {transform: scale(0)}
+  40% {transform: scale(1.0)}
+}

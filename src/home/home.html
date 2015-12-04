@@ -1,4 +1,5 @@
 <div class="home">
+  <spinner ng-if="!items"></spinner>
   <ol ng-attr-start="{{pageSize * currentPage + 1}}">
     <li ng-repeat="item in items | page:currentPage:pageSize">
       <item id="item.$value"></item>
