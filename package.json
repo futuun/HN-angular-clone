@@ -1,0 +1,45 @@
+{
+  "name": "hn-angular-clone",
+  "version": "1.0.0",
+  "description": "just another angular clone that use hacker news api",
+  "main": "./src/app.ts",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --config webpack.production.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/futuun/HN-angular-clone.git"
+  },
+  "author": "Michał Mokijewski <mokijewskim@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/futuun/HN-angular-clone/issues"
+  },
+  "homepage": "https://github.com/futuun/HN-angular-clone#readme",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-ui-router": "^0.2.15",
+    "angularfire": "^1.1.3",
+    "firebase": "^2.3.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.1.2",
+    "css-loader": "^0.14.0",
+    "css-mqpacker": "^4.0.0",
+    "exports-loader": "^0.6.2",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.3.0",
+    "node-sass": "^3.4.2",
+    "postcss-loader": "^0.7.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "ts-loader": "^0.6.1",
+    "tsd": "^0.6.5",
+    "typescript": "^1.7.3",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  }
+}
