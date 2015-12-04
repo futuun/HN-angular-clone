@@ -3,5 +3,11 @@ export default function routes(
   $stateProvider:ng.ui.IStateProvider
 ):void {
   $urlRouterProvider.otherwise('/');
+
+  $stateProvider
+    .state('home', {
+      url: '/',
+      template: '<home></home>'
+    })
   ;
 }
