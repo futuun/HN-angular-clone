@@ -4,6 +4,12 @@
     "dist"
   ],
   "files": [
+    "src/filters/trustHtml.ts",
+    "src/filters/commentsNumber.ts",
+    "src/filters/domain.ts",
+    "src/components/timeAgo/fromNow.ts",
+    "src/components/timeAgo/timeAgo.ts",
+    "src/components/timeAgo/index.ts",
     "src/components/pagination/paginationCtrl.ts",
     "src/components/pagination/pagination.ts",
     "src/components/pagination/page.ts",
