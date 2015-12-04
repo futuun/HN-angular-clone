@@ -1,7 +1,9 @@
 <div class="home">
-  <ol>
-    <li ng-repeat="item in items">
+  <ol ng-attr-start="{{pageSize * currentPage + 1}}">
+    <li ng-repeat="item in items | page:currentPage:pageSize">
       <item id="item.$value"></item>
     </li>
   </ol>
+
+  <pagination page="currentPage" page-size="pageSize" total-items="items.length"></pagination>
 </div>

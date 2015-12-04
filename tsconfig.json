@@ -4,6 +4,10 @@
     "dist"
   ],
   "files": [
+    "src/components/pagination/paginationCtrl.ts",
+    "src/components/pagination/pagination.ts",
+    "src/components/pagination/page.ts",
+    "src/components/pagination/index.ts",
     "src/item/itemCtrl.ts",
     "src/item/item.ts",
     "src/home/homeCtrl.ts",

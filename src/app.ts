@@ -8,10 +8,12 @@ import HackerNewsAPI from './factories/HackerNewsAPI.ts';
 import home from './home/home.ts';
 import item from './item/item.ts';
 
+import pagination from './components/pagination/index.ts';
+
 module hackerNews {
   'use strict';
   angular
-    .module('hacker-news', ['ui.router', 'firebase'])
+    .module('hacker-news', ['ui.router', 'firebase', pagination])
     .config(['$urlRouterProvider', '$stateProvider', routes])
     .factory('HackerNewsAPI', ['$firebaseArray', '$firebaseObject', HackerNewsAPI])
     .directive('home', home)
