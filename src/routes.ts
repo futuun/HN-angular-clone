@@ -13,5 +13,9 @@ export default function routes(
       url: '/user/:userID',
       template: '<user></user>'
     })
+    .state('discussion', {
+      url: '/discussion/:discussionID',
+      template: '<discussion></discussion>'
+    })
   ;
 }

@@ -14,6 +14,8 @@
     "src/components/pagination/pagination.ts",
     "src/components/pagination/page.ts",
     "src/components/pagination/index.ts",
+    "src/discussion/discussionCtrl.ts",
+    "src/discussion/discussion.ts",
     "src/user/userCtrl.ts",
     "src/user/user.ts",
     "src/item/itemCtrl.ts",
