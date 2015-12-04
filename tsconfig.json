@@ -4,6 +4,8 @@
     "dist"
   ],
   "files": [
+    "src/item/itemCtrl.ts",
+    "src/item/item.ts",
     "src/home/homeCtrl.ts",
     "src/home/home.ts",
     "src/factories/HackerNewsAPI.ts",
