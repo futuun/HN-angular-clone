@@ -4,6 +4,7 @@
     "dist"
   ],
   "files": [
+    "src/factories/HackerNewsAPI.ts",
     "src/routes.ts",
     "src/app.ts",
     "typings/tsd.d.ts"
