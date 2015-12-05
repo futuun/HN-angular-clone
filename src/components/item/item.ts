@@ -1,5 +1,4 @@
 import itemCtrl from './itemCtrl.ts';
-import './item.scss';
 const itemTemplate = require('./item.html');
 
 export default function item():ng.IDirective {
