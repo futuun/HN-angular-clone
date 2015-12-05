@@ -1,5 +1,6 @@
 export default function fromNow() {
   return function(input):string {
+    if (!input) return ''; // if input is falsy return empty string
     let timeDifference:number = Math.round(new Date().getTime() / 1000) - input;
     const timeUnits = {
       'year': 31536000,
@@ -15,5 +16,6 @@ export default function fromNow() {
       let numberOfUnits:number = Math.floor(timeDifference / timeUnits[timeUnit]);
       return `${numberOfUnits} ${timeUnit}${numberOfUnits > 1 ? 's ago' : ' ago'}`;
     }
+    return 'just now';
   };
 }
