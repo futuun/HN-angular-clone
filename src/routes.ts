@@ -6,7 +6,7 @@ export default function routes(
 
   $stateProvider
     .state('home', {
-      url: '/{view:|ask|job|show|}',
+      url: '/{view:|ask|job|show}',
       template: '<home></home>'
     })
     .state('user', {
