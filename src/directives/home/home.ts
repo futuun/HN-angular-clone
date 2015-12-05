@@ -5,6 +5,6 @@ export default function home():ng.IDirective {
   return {
     scope: {},
     templateUrl: homeTemplate,
-    controller: ['$scope', 'HackerNewsAPI', homeCtrl]
+    controller: ['$scope', '$stateParams', 'HackerNewsAPI', homeCtrl]
   };
 }
