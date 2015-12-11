@@ -51,8 +51,12 @@ var config = {
         loader: 'ts'
       },
       {
+        test: /\.htm$/,
+        loader: 'html'
+      },
+      {
         test: /\.html$/,
-        loader: 'file?name=[name].[ext]'
+        loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/!html'
       },
       {
         test: /\.scss$/,

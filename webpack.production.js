@@ -49,8 +49,12 @@ var production = {
         loader: 'ts'
       },
       {
+        test: /\.htm$/,
+        loader: 'html'
+      },
+      {
         test: /\.html$/,
-        loader: 'file?name=tmpl/[name].[ext]?[hash:base64]'
+        loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/!html'
       },
       {
         test: /\.scss$/,

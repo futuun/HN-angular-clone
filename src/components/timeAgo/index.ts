@@ -7,7 +7,7 @@ const moduleName = 'time-ago';
 angular
   .module(moduleName, [])
   .filter('fromNow', fromNow)
-  .directive('timeAgo', ['$timeout', 'fromNowFilter', timeAgo])
+  .directive('timeAgo', ['$timeout', '$interval', 'fromNowFilter', timeAgo])
 ;
 
 export default moduleName;

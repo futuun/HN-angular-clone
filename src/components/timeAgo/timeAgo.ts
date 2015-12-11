@@ -1,25 +1,39 @@
-export default function timeAgo($timeout, fromNow):ng.IDirective {
+export default function timeAgo($timeout, $interval, fromNow):ng.IDirective {
   return function(scope, element, attrs) {
-    let timeoutID = null; // you need this to cancel timeout
-    let interval = 61000 - (new Date().getTime() % 60000);
+    let timeoutPromise = null;
+    let intervalPromise = null;
+    const intervalLength = 60000;
 
-    function updateTime() {
-      element.text(fromNow(attrs.timeAgo));
-    }
-
-    function updateLater() {
-      timeoutID = $timeout(function() {
-        updateTime();
-        interval = 60000;
-        updateLater();
-      }, interval);
-    }
-
-    element.bind('$destroy', function () {
-      if (timeoutID) $timeout.cancel(timeoutID);
+    attrs.$observe('timeAgo', val => {
+      updateView();
+      timeoutPromise = $timeout(function() {
+        updateView();
+        setUpdate();
+      }, 60000 - (new Date().getTime() % 60000));
     });
 
-    updateTime();
-    updateLater();
+    function updateView() {
+      // don't update if value hasn't changed
+      if (element.text() != fromNow(attrs.timeAgo))
+        element.text(fromNow(attrs.timeAgo));
+    }
+
+    function setUpdate() {
+      intervalPromise = $interval(function() {
+        updateView();
+      }, intervalLength);
+    }
+
+    element.bind('click', function() {
+      element.text(new Date(attrs.timeAgo * 1000).toUTCString());
+      $timeout(function() {
+        updateView();
+      }, 5000);
+    });
+
+    element.bind('$destroy', function() {
+      if (timeoutPromise) $timeout.cancel(timeoutPromise);
+      if (intervalPromise) $interval.cancel(intervalPromise);
+    });
   };
 }
