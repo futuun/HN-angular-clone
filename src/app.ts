@@ -5,6 +5,7 @@ import 'angularfire';
 
 import routes from './routes.ts';
 import HackerNewsAPI from './factories/HackerNewsAPI.ts';
+import navigation from './directives/navigation/navigation.ts';
 import home from './directives/home/home.ts';
 import user from './directives/user/user.ts';
 import discussion from './directives/discussion/discussion.ts';
@@ -24,6 +25,7 @@ module hackerNews {
     .module('hacker-news', ['ui.router', 'firebase', pagination, timeAgo, spinner, item])
     .config(['$urlRouterProvider', '$stateProvider', routes])
     .factory('HackerNewsAPI', ['$firebaseArray', '$firebaseObject', HackerNewsAPI])
+    .directive('navigation', navigation)
     .directive('home', home)
     .directive('user', user)
     .directive('discussion', discussion)

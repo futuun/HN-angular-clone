@@ -1,10 +1,7 @@
-<div class="home">
-  <spinner ng-if="!items"></spinner>
-  <ol ng-attr-start="{{pageSize * currentPage + 1}}">
-    <li ng-repeat="item in items | page:currentPage:pageSize">
-      <item id="item.$value"></item>
-    </li>
-  </ol>
-
-  <pagination page="currentPage" page-size="pageSize" total-items="items.length"></pagination>
+<div ng-repeat="item in items | page:currentPage:pageSize"
+  item item-id="item.$value">
 </div>
+
+<pagination page="currentPage" page-size="pageSize"
+  total-items="items.length">
+</pagination>

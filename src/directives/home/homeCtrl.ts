@@ -17,8 +17,11 @@ export default function homeCtrl($scope, $stateParams, HackerNewsAPI) {
     case 'ask':
       $scope.items = HackerNewsAPI.fetchAsk();
       break;
+    case 'best':
+      $scope.items = HackerNewsAPI.fetchBest();
+      break;
     case '':
-      $scope.items = HackerNewsAPI.fetchHomepage();
+      $scope.items = HackerNewsAPI.fetchHot();
       break;
   }
 }

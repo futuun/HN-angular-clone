@@ -1,0 +1,24 @@
+<nav role='navigation' class="main-nav" id="main-nav">
+  <ul id="main-nav-list">
+    <li>
+      <a ui-sref="home({view: ''})"
+        ng-class="{active: view == ''}">Hot</a>
+    </li>
+    <li>
+      <a ui-sref="home({view: 'ask'})"
+        ng-class="{active: view == 'ask'}">Ask HN</a>
+    </li>
+    <li>
+      <a ui-sref="home({view: 'show'})"
+        ng-class="{active: view == 'show'}">Show HN</a>
+    </li>
+    <li>
+      <a ui-sref="home({view: 'job'})"
+        ng-class="{active: view == 'job'}">Jobs</a>
+    </li>
+    <li>
+      <a ui-sref="home({view: 'best'})"
+        ng-class="{active: view == 'best'}">Best</a>
+    </li>
+  </ul>
+</nav>

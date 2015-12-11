@@ -1,7 +1,5 @@
 <div class="discussion">
-  <item id="discussionID" top-level="true"></item>
+  <div item item-id="discussionID" top-level="true"></div>
 
-  <div class="discussion-item" ng-repeat="post in discussion.kids">
-    <item id="post"></item>
-  </div>
+  <div ng-repeat="post in discussion.kids" item item-id="post"></div>
 </div>

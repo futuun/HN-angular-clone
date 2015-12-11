@@ -23,6 +23,8 @@
     "src/directives/user/user.ts",
     "src/directives/home/homeCtrl.ts",
     "src/directives/home/home.ts",
+    "src/directives/navigation/navigationCtrl.ts",
+    "src/directives/navigation/navigation.ts",
     "src/factories/HackerNewsAPI.ts",
     "src/routes.ts",
     "src/app.ts",

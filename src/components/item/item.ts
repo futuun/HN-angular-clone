@@ -4,7 +4,7 @@ const itemTemplate = require('./item.html');
 export default function item():ng.IDirective {
   return {
     scope: {
-      id: '=',
+      itemId: '=',
       loadChildren: '@?',
       topLevel: '@?'
     },
