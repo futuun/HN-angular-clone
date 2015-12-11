@@ -2,6 +2,7 @@ import 'firebase';
 import 'angular';
 import 'angular-ui-router';
 import 'angularfire';
+import './main.scss';
 
 import routes from './routes.ts';
 import HackerNewsAPI from './factories/HackerNewsAPI.ts';

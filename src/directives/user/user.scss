@@ -1,0 +1,58 @@
+@import '../../var.scss';
+
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  border-bottom: 1px solid nth($colors, 4);
+  background-color: nth($colors, 7);
+  color: nth($colors, 1);
+}
+
+.user__top {
+  display: flex;
+  align-items: center;
+
+  h1 {color: nth($colors, 2)}
+}
+
+.karma {
+  @extend %secondary-font;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 80px;
+  margin-right: 20px;
+  border-radius: 50%;
+  background-color: nth($colors, 1);
+  color: nth($colors, 7);
+  font-size: 12px;
+
+  span {font-size: 26px}
+}
+
+.bio {
+  padding: 0 25px;
+  color: nth($colors, 6);
+}
+
+.submissions-btn {
+  @extend %secondary-font;
+  cursor: pointer;
+  width: 150px;
+  margin: 20px 50px;
+  padding: 10px;
+  border: 2px solid nth($colors, 3);
+  color: nth($colors, 3);
+  text-align: center;
+  transition-duration: .3s;
+
+  &:hover {
+    background-color: nth($colors, 3);
+    color: nth($colors, 7);
+  }
+
+  &:active {transform: translateY(5px)}
+}

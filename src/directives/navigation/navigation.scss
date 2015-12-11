@@ -1,35 +1,33 @@
 @import '../../var.scss';
 
 .main-nav {
-  background: nth($colors, 7);
+  background-color: nth($colors, 7);
 
   ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   a {
-    padding: 10px 20px;
-    font-size: 12px;
-    font-family: monospace;
-    font-weight: bold;
-    text-decoration: none;
+    @extend %secondary-font;
     display: flex;
     align-items: center;
+    padding: 10px 20px;
     color: nth($colors, 4);
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
 
     &:hover,
-    &:focus {
-      color: nth($colors, 1);;
-    }
+    &:focus {color: nth($colors, 1)}
 
     &.active {
+      background-color: nth($colors, 1);
       color: nth($colors, 7);
-      background: nth($colors, 1);
     }
   }
 }

@@ -1,2 +1,11 @@
-$colors: #bfae60, #e1a170, #9bae87, #7592a3,
-         #a1617a, #777c82, #25292c;
+$colors:
+  #bfae60, #e1a170, #9bae87, #7592a3,
+  #a1617a, #777c82, #25292c;
+
+%primary-font {font-family: Helvetica Neue, sans-serif}
+%secondary-font {font-family: Monosten, monospace}
+
+%link {
+  text-decoration: none;
+  &:hover {text-decoration: underline}
+}

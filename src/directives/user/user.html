@@ -1,19 +1,26 @@
-<spinner class="item-loading" ng-if="!user"></spinner>
+<spinner ng-if="!user"></spinner>
 
 <div class="user-detail" ng-if="user">
-  <p>user: {{user.id}}</p>
-  <p>created: <span time-ago="{{user.created}}"></span></p>
-  <p>karma: {{user.karma}}</p>
-  <p ng-if="user.delay">delay: {{user.delay}} minutes</p>
-  <p>about: <span ng-bind-html="user.about |trustHtml"></span></p>
+  <header class="user__top">
+    <div class="karma">karma<span>{{user.karma}}</span> points</div>
+    <h1>{{user.id}}</h1>
+  </header>
 
-  <p>
-    <a class="u-pointer" ng-click="showSubmissions = !showSubmissions">show submitted</a>
-    <div ng-if="showSubmissions">
-      <pagination page="currentPage" page-size="pageSize" total-items="user.submitted.length"></pagination>
-      <div class="user-detail-item" ng-repeat="submission in user.submitted | page:currentPage:pageSize">
-        <item id="submission" load-children="false"></item>
-      </div>
-    </div>
-  </p>
+  <section class="bio">
+    <p ng-if="user.delay">delay {{user.delay}} minutes</p>
+    <p>member since {{user.created*1000 | date:'d MMMM yyyy, HH:mm:ss'}}</p>
+    <section ng-if="user.about" ng-bind-html="user.about |trustHtml"></section>
+  </section>
+
+  <span class="submissions-btn" ng-click="toggleSubmissions()">
+    {{showSubmissions ? 'hide' : 'show'}} submissions
+  </span>
+</div>
+<div ng-if="showSubmissions">
+  <div ng-repeat="submission in user.submitted | page:currentPage:pageSize"
+    item item-id="submission" load-children="false">
+  </div>
+  <pagination page="currentPage" page-size="pageSize"
+    total-items="user.submitted.length">
+  </pagination>
 </div>

@@ -1,0 +1,16 @@
+@import './var.scss';
+
+body {
+  background-color: nth($colors, 4);
+  margin: 0;
+  padding: 0;
+}
+
+.body-container {
+  margin: 0 auto;
+  width: 80%;
+
+  @media only screen and (max-width : 750px) {
+    width: 100%;
+  }
+}
