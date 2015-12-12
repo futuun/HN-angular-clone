@@ -1,3 +1,143 @@
-.children {
-  margin-left: 50px;
+@import '../../var.scss';
+
+.story, .poll, .job {
+  padding: 10px 0;
+  border-bottom: 1px solid nth($colors, 4);
+  background-color: nth($colors, 7);
+  color: nth($colors, 6);
+}
+
+.wrapper, .pollopt {
+  display: flex;
+  flex-direction: row;
+}
+
+.pollopt {
+  align-items: center;
+  padding: 5px;
+}
+
+.pollopt-score {
+  min-width: 50px;
+  color: nth($colors, 3);
+  text-align: center;
+}
+
+.options {padding: 10px}
+.job {padding-left: 20px}
+
+.score {
+  @extend %secondary-font;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  margin-right: 10px;
+  border-right: 1px solid nth($colors, 4);
+  color: nth($colors, 1);
+  font-size: 20px;
+}
+
+.title {
+  @extend %primary-font;
+  @extend %link;
+  color: nth($colors, 4);
+  font-size: 14px;
+}
+
+.domain {
+  @extend %secondary-font;
+  color: nth($colors, 5);
+  font-size: 10px;
+  text-decoration: none;
+}
+
+.section__bottom {
+  @extend %secondary-font;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.comment {
+  padding: 5px;
+  border-bottom: 1px solid nth($colors, 4);
+  background-color: nth($colors, 7);
+
+  .comment {
+    margin-left: 15px;
+    padding-bottom: 0;
+    border-left: 3px solid nth($colors, 5);
+    border-bottom: none;
+
+    @media only screen and (max-width : 750px) {
+      margin-left: 0px;
+      border-left: 2px solid nth($colors, 6);
+    }
+  }
+}
+
+.comment__top {
+  @extend %secondary-font;
+  padding: 0 0 3px;
+  font-size: 12px;
+}
+
+.comment__content {
+  @extend %primary-font;
+  padding: 5px 0 5px 15px;
+  color: nth($colors, 5);
+  font-size: 14px;
+
+  @media only screen and (max-width : 750px) {
+    padding: 0;
+    overflow-wrap: break-word;
+
+    code {
+      display: inline-block;
+      max-width: 300px;
+      overflow: auto;
+      word-wrap: normal;
+    }
+  }
+
+  a {
+    @extend %link;
+    color: nth($colors, 4);
+
+    @media only screen and (max-width : 750px) {
+      display: inline-block;
+      vertical-align: top;
+      max-width: 300px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.url {
+  @extend %link;
+  color: nth($colors, 1);
+}
+
+.time {
+  color: nth($colors, 3);
+  cursor: help;
+}
+
+.content {
+  @extend %primary-font;
+  padding: 15px 10px 0px;
+  color: nth($colors, 5);
+  font-size: 14px;
+
+  a {
+    @extend %link;
+    color: nth($colors, 4);
+  }
+}
+
+.expand {
+  cursor: pointer;
+  color: nth($colors, 6);
 }

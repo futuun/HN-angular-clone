@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="score">{{item.score}}</div>
+
+  <section>
+    <a class="title" ui-sref="discussion({discussionID: item.id})">{{item.title}}</a>
+    <span class="domain" ng-show="item.url">({{item.url | domain}})</span>
+
+    <section class="section__bottom">
+      by <a ui-sref="user({userID: item.by})" class="url">{{item.by}}</a> |
+      <span time-ago="{{item.time}}" class="time"></span> |
+      <a ui-sref="discussion({discussionID: item.id})" class="url">
+        {{item.descendants | commentsNumber}}
+      </a>
+      <span ng-if="item.text && !topLevel" ng-click="toggle.expand()" class="expand">| expand</span>
+    </section>
+  </section>
+</div>
+
+<article class="content" ng-show="expandItem && item.text"
+  ng-bind-html="item.text | trustHtml"></article>
+
+<div class="options" ng-if="item.parts && expandItem" ng-hide="hideItem">
+  <item ng-repeat="kid in item.parts" item-id="kid"></item>
+</div>

@@ -1,27 +1,28 @@
 export default function homeCtrl($scope, $stateParams, HackerNewsAPI) {
-  $scope.pageSize = 25;
+  $scope.pageSize = 20;
+  let firebasePromise = fetchProperData();
 
-  // $stateParams.view will capture matching string 'ask','job','show,''
-  // we can use that to get right content on screen
-  // news page will be in separate directive coz of logic
-  switch ($stateParams.view) {
-    case 'ask':
-      $scope.items = HackerNewsAPI.fetchAsk();
-      break;
-    case 'show':
-      $scope.items = HackerNewsAPI.fetchShow();
-      break;
-    case 'job':
-      $scope.items = HackerNewsAPI.fetchJob();
-      break;
-    case 'ask':
-      $scope.items = HackerNewsAPI.fetchAsk();
-      break;
-    case 'best':
-      $scope.items = HackerNewsAPI.fetchBest();
-      break;
-    case '':
-      $scope.items = HackerNewsAPI.fetchHot();
-      break;
+  firebasePromise.$loaded()
+    .then(function(data) {
+      $scope.items = data;
+      firebasePromise.$watch(function(e) {
+        firebasePromise.sort(function compare(a, b) {
+          return +a.$id -b.$id;
+        });
+        $scope.items = firebasePromise;
+      });
+    })
+    .catch(function(error) {
+      console.error("Error:", error);
+    });
+
+  function fetchProperData() {  // could be done with eval :)
+    switch ($stateParams.view) {
+      case '': return HackerNewsAPI.fetchHot();
+      case 'ask': return HackerNewsAPI.fetchAsk();
+      case 'best': return HackerNewsAPI.fetchBest();
+      case 'job': return HackerNewsAPI.fetchJob();
+      case 'show': return HackerNewsAPI.fetchShow();
+    }
   }
 }

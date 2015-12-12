@@ -1,0 +1,17 @@
+<header class="comment__top">
+  <span class="expand" ng-click="toggle.hide()" ng-if="!topLevel">
+    {{hideItem ? '+' : '-'}}
+  </span>
+  <a ui-sref="user({userID: item.by})" class="url">{{item.by}}</a>
+  <span time-ago="{{item.time}}" class="time"></span>
+  <a ng-if="!topLevel" class="url"
+    ui-sref="discussion({discussionID: item.id})">link</a>
+  <a ng-if="topLevel" class="url"
+    ui-sref="discussion({discussionID: item.parent})">parent</a>
+</header>
+<p ng-if="item.changed">changed</p>
+
+<section class="comment__content" ng-hide="!item || hideItem"
+  ng-bind-html="item.text | trustHtml"></section>
+<div ng-if="loadChildren" ng-hide="hideItem" ng-repeat="kid in item.kids"
+  item item-id="kid"></div>

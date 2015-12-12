@@ -1,25 +1,38 @@
 export default function itemCtrl($scope, $element, $attrs, $sce, HackerNewsAPI) {
-  $attrs.$addClass('item');
   $scope.loadChildren = true;
+  $scope.hideItem = false;
+  $scope.expandItem = false;
+  $scope.toggle = {
+    hide: function() {
+      $scope.hideItem = !$scope.hideItem
+    },
+    expand:  function() {
+      $scope.expandItem = !$scope.expandItem
+    },
+  };
 
-  $attrs.$observe('loadChildren', val =>
-    $scope.loadChildren = val !== 'false');
-
-  $attrs.$observe('topLevel', val => {
-    if (val === 'true') $scope.loadChildren = false
-  });
-
-  var firebasePromise;
-  // Watch for changes and update our synched item.
-  $scope.$watch(() => $scope.id, () => {
-    // If we already have a firebase connection destroy it
-    // so we can re-bind it.
+  let firebasePromise;
+  $scope.$watch('itemId', function() {
     if (firebasePromise) firebasePromise.$destroy();
 
-    firebasePromise = HackerNewsAPI.fetchItem($scope.id);
-    firebasePromise.$bindTo($scope, 'item');
+    firebasePromise = HackerNewsAPI.fetchItem($scope.itemId);
+    firebasePromise.$loaded()
+      .then(function(data) {
+        $scope.item = data;
+      })
+      .catch(function(error) {
+        console.error("Error:", error);
+      });
   });
 
-  $scope.hideItem = false;
-  $scope.toggleHideItem = () => $scope.hideItem = !$scope.hideItem;
+  $attrs.$observe('loadChildren', function(val) {
+    $scope.loadChildren = val !== 'false';
+  });
+
+  $attrs.$observe('topLevel', function(val) {
+    if (val === 'true') {
+      $scope.loadChildren = false;
+      $scope.expandItem = true;
+    }
+  });
 }
