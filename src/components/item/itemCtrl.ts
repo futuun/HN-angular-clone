@@ -11,18 +11,16 @@ export default function itemCtrl($scope, $element, $attrs, $sce, HackerNewsAPI) 
     },
   };
 
-  let firebasePromise;
-  $scope.$watch('itemId', function() {
-    if (firebasePromise) firebasePromise.$destroy();
+  let watcherID = $scope.$watch('itemId', function() {
+    if ($scope.item) $scope.item.$destroy();
 
-    firebasePromise = HackerNewsAPI.fetchItem($scope.itemId);
-    firebasePromise.$loaded()
-      .then(function(data) {
-        $scope.item = data;
-      })
-      .catch(function(error) {
-        console.error("Error:", error);
-      });
+    $scope.item = HackerNewsAPI.fetchItem($scope.itemId);
+  });
+
+  $element.on('$destroy', function() {
+    if ($scope.item) $scope.item.$destroy();
+    if (watcherID) watcherID();
+    $scope.$destroy();
   });
 
   $attrs.$observe('loadChildren', function(val) {

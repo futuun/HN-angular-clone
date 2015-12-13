@@ -84,35 +84,32 @@
 
 .comment__content {
   @extend %primary-font;
+  display: inline-block;
   padding: 5px 0 5px 15px;
   color: nth($colors, 5);
   font-size: 14px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
 
-  @media only screen and (max-width : 750px) {
-    padding: 0;
-    overflow-wrap: break-word;
+  @media only screen and (max-width : 750px) {padding: 0}
 
-    code {
-      display: inline-block;
-      max-width: 300px;
-      overflow: auto;
-      word-wrap: normal;
-    }
+  a, code {
+    display: inline-block;
+    max-width: 70vw;
+
+    @media only screen and (max-width : 750px) {max-width: 300px}
+    @media only screen and (max-width : 480px) {max-width: 240px}
   }
 
   a {
     @extend %link;
+    vertical-align: top;
+    overflow: hidden;
     color: nth($colors, 4);
-
-    @media only screen and (max-width : 750px) {
-      display: inline-block;
-      vertical-align: top;
-      max-width: 300px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
   }
+
+  code {overflow: auto}
 }
 
 .url {

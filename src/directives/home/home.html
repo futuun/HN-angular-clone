@@ -1,3 +1,5 @@
+<spinner ng-if="items.length < 1"></spinner>
+
 <div ng-repeat="item in items | page:currentPage:pageSize"
   item item-id="item.$value">
 </div>

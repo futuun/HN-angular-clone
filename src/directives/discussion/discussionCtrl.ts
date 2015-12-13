@@ -1,4 +1,8 @@
 export default function discussionCtrl($scope, $stateParams, HackerNewsAPI) {
   $scope.discussionID = $stateParams.discussionID;
-  HackerNewsAPI.fetchItem($stateParams.discussionID).$bindTo($scope, 'discussion');
+  $scope.discussion = HackerNewsAPI.fetchItem($stateParams.discussionID);
+
+  $scope.$parent.$on('$destroy', function() {
+    if ($scope.discussion) $scope.discussion.$destroy();
+  });
 }

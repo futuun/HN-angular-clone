@@ -9,7 +9,14 @@ angular
     return {
       scope: {},
       restrict: 'E',
-      template: '<div class="s"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div><div class="b5"></div><div class="b6"></div></div>'
+      template: `<div class="spinner">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                 </div> `
     };
   })
 ;

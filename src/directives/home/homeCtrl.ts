@@ -1,20 +1,18 @@
 export default function homeCtrl($scope, $stateParams, HackerNewsAPI) {
   $scope.pageSize = 20;
-  let firebasePromise = fetchProperData();
+  $scope.items = fetchProperData();
 
-  firebasePromise.$loaded()
-    .then(function(data) {
-      $scope.items = data;
-      firebasePromise.$watch(function(e) {
-        firebasePromise.sort(function compare(a, b) {
-          return +a.$id -b.$id;
-        });
-        $scope.items = firebasePromise;
-      });
-    })
-    .catch(function(error) {
-      console.error("Error:", error);
+  let watcherID = $scope.items.$watch(function(e) {
+    $scope.items.sort(function(a, b) {
+      return +a.$id -b.$id;
     });
+  });
+
+  $scope.$parent.$on('$destroy', function() {
+    if ($scope.item) $scope.item.$destroy();
+    if (watcherID) watcherID();
+    $scope.$destroy();
+  });
 
   function fetchProperData() {  // could be done with eval :)
     switch ($stateParams.view) {
