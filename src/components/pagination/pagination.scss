@@ -1,0 +1,83 @@
+@import '../../var.scss';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 35px;
+  width: 80%;
+  border-top: 1px solid nth($colors, 4);
+  background-color: nth($colors, 7);
+  bottom: 0;
+
+  @media only screen and (max-width : 750px) {
+    width: 100%;
+  }
+}
+
+// idea (and most of code) stolen from @hakimel (http://codepen.io/hakimel/pen/gfIsk/)
+$size: 10px;
+$thickness: 3px;
+$angle: 45deg;
+$angleHover: 35deg;
+$angleActive: 30deg;
+
+@mixin arrowTransform( $angle, $x: 0, $y: 0 ) {
+  i:first-child {transform: translate( $x, $y ) rotate( $angle )}
+  i:last-child {transform: translate( $x, -$y ) rotate( -$angle )}
+}
+
+.pg-btn {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  margin: 10px;
+  width: $size;
+  height: $size;
+  cursor: pointer;
+  transform: translate3d(0,0,0); // fixes flicker in webkit
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: $size;
+    height: $thickness;
+    border-radius: $thickness / 2;
+    background: nth($colors, 1);
+    transition: all 0.2s ease;
+  }
+}
+
+.left {
+  i { transform-origin: 0% 50%}
+  @include arrowTransform( $angle, 0, -1px );
+  &:hover {@include arrowTransform( $angleHover, 0, -1px )}
+  &:active {@include arrowTransform( $angleActive, 1px, -1px )}
+  &--disable {
+    @include arrowTransform( 0deg, -5px, 0 );
+    opacity: 0.3;
+    cursor: default;
+    &:hover {@include arrowTransform( 0deg, -5px, 0 )}
+  }
+}
+
+.right {
+  i {transform-origin: 100% 50%}
+  @include arrowTransform( $angle, 0, 1px );
+  &:hover {@include arrowTransform( $angleHover, 0, 1px )}
+  &:active {@include arrowTransform( $angleActive, 1px, 1px )}
+  &--disable {
+    @include arrowTransform( 0deg, 5px, 0 );
+    opacity: 0.3;
+    cursor: default;
+    &:hover {@include arrowTransform( 0deg, 5px, 0 )}
+  }
+}
+
+.counter {
+  @extend %primary-font;
+  color: nth($colors, 1);
+  font-size: 18px;
+}
